@@ -44,6 +44,29 @@ export interface HabitStats {
   completionRate90Days: number; // 0-100
 }
 
+// ---- Rewards ----
+
+export type Tier = 'Bronze' | 'Silver' | 'Gold' | 'Platinum';
+
+export interface Coupon {
+  id: string;
+  brand: string;
+  category: string;
+  title: string; // e.g. "20% off protein"
+  description: string;
+  coinCost: number;
+  minTier: Tier;
+  code: string;
+  expiresLabel: string;
+}
+
+export interface ClaimedCoupon {
+  couponId: string;
+  code: string;
+  claimedAt: string; // ISO date string
+  coinCost: number;
+}
+
 // Category color mapping
 export const CATEGORY_COLORS: Record<Category, string> = {
   Health: 'green',

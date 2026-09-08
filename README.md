@@ -16,6 +16,9 @@ backend, no account.
 - Stats dashboard: check-ins over time, category breakdown, GitHub-style
   activity heatmap, 30 / 60 / 90-day ranges
 - Category filter, search, and sort on the dashboard
+- **Streak rewards** — earn "Consistency Coins" from check-ins; higher
+  streaks unlock tiered brand-coupon rewards (demo catalogue; a real one
+  needs a backend + brand deals)
 - **Dark mode** (follows your OS, with a manual toggle)
 - Export data to JSON, reset to demo data, or clear everything
 - Toast notifications and a confetti burst on streak milestones
@@ -61,14 +64,15 @@ src/
 │   ├── habits/     # HabitCard, HabitList, filters, badges, modals
 │   ├── checkin/    # CheckinButton, HabitCalendar, HabitJournal
 │   ├── stats/      # CompletionChart, HeatmapCalendar, CategoryBreakdown
+│   ├── rewards/    # CouponCard, TierProgress, CoinBalance
 │   └── data/       # DataManagement (export / reset / clear)
-├── context/        # HabitContext (habits, logs, actions)
-├── hooks/          # useHabits, useTheme, useIsDark
-├── pages/          # Dashboard, Stats, HabitDetail
-├── services/       # mockHabitService (localStorage-backed, Promise API)
-├── data/           # seed habits + generated check-in history
+├── context/        # HabitContext, RewardsContext
+├── hooks/          # useHabits, useRewards, useTheme, useIsDark
+├── pages/          # Dashboard, Stats, HabitDetail, Rewards
+├── services/       # mockHabitService, rewardsService (localStorage, Promise API)
+├── data/           # seed habits, check-in history, demo coupon catalogue
 ├── types/          # shared types
-└── utils/          # date, streak, stats, frequency, colour helpers
+└── utils/          # date, streak, stats, frequency, rewards, colour helpers
 ```
 
 ## Data model

@@ -6,6 +6,7 @@ import * as api from '../services/mockHabitService';
 import { getToday } from '../utils/dateUtils';
 import { calculateCurrentStreak } from '../utils/streakCalculator';
 import { celebrate, isMilestone } from '../lib/confetti';
+import { COINS_PER_CHECKIN } from '../utils/rewards';
 
 export type SortOption = 'name' | 'streak' | 'created';
 
@@ -138,6 +139,8 @@ export const HabitProvider = ({ children }: { children: ReactNode }) => {
             if (isMilestone(streak)) {
               celebrate();
               toast.success(`${streak}-day streak! Keep it going`);
+            } else {
+              toast.success(`+${COINS_PER_CHECKIN} coins`, { icon: '🪙' });
             }
             return next;
           });
